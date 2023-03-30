@@ -22,7 +22,7 @@ module ::DiscourseChatbot
               presence_penalty: SiteSetting.chatbot_request_presence_penalty / 100.0
           })
 
-        if SiteSetting.chatbot_open_ai_model == "gpt-4"
+      if SiteSetting.chatbot_open_ai_model == "gpt-4"
         response = @client.chat(
           parameters: {
               model: "gpt-4",
@@ -66,6 +66,7 @@ module ::DiscourseChatbot
         else
           response["choices"][0]["text"]
         end
+      end
       end
     end
 
