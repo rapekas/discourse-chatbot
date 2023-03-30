@@ -10,18 +10,6 @@ module ::DiscourseChatbot
     end
 
     def get_response(prompt)
-      if SiteSetting.chatbot_open_ai_model == "gpt-3.5-turbo"
-        response = @client.chat(
-          parameters: {
-              model: "gpt-3.5-turbo",
-              messages: prompt,
-              max_tokens: SiteSetting.chatbot_max_response_tokens,
-              temperature: SiteSetting.chatbot_request_temperature / 100.0,
-              top_p: SiteSetting.chatbot_request_top_p / 100.0,
-              frequency_penalty: SiteSetting.chatbot_request_frequency_penalty / 100.0,
-              presence_penalty: SiteSetting.chatbot_request_presence_penalty / 100.0
-          })
-
       if SiteSetting.chatbot_open_ai_model == "gpt-4"
         response = @client.chat(
           parameters: {
@@ -66,7 +54,6 @@ module ::DiscourseChatbot
         else
           response["choices"][0]["text"]
         end
-      end
       end
     end
 
