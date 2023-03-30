@@ -8,7 +8,7 @@ module ::DiscourseChatbot
       message_collection = collect_past_interactions(opts[:reply_to_message_or_post_id])
       bot_user_id = opts[:bot_user_id]
 
-      if SiteSetting.chatbot_open_ai_model == "gpt-3.5-turbo"
+      if SiteSetting.chatbot_open_ai_model == "gpt-3.5-turbo" || SiteSetting.chatbot_open_ai_model == "gpt-4"
 
         messages = [{ "role": "system", "content": I18n.t("chatbot.prompt.system") }]
 
